@@ -1,0 +1,22 @@
+/* LightStage — stylized CSS lighting. No global resets or document selectors. */
+.ls-stage{position:relative;isolation:isolate;touch-action:pan-y pinch-zoom;--ls-light:255,226,181;--ls-power:.78;--ls-x:72%;--ls-y:24%}
+.ls-stage:focus-visible,.ls-material:focus-visible{outline:2px solid var(--ls-focus,#c6d5a6);outline-offset:5px}
+.ls-material{box-sizing:border-box;--ls-mx:65%;--ls-my:20%;--ls-sx:-8px;--ls-sy:10px;box-shadow:var(--ls-sx) var(--ls-sy) 25px #0007,0 1px 1px #ffffff1c}
+
+.ls-metal{border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at var(--ls-mx) var(--ls-my),rgba(var(--ls-light),calc(var(--ls-power)*.9)),transparent 70%),repeating-linear-gradient(0deg,#777d7811 0px,#bcc0b611 1px,transparent 2px,transparent 3px),linear-gradient(130deg,#a4a9a1,#4b534e 55%,#9b9f97);border:1px solid #e0e4d666;color:#242b25}
+
+.ls-paper{background:radial-gradient(ellipse at var(--ls-mx) var(--ls-my),rgba(var(--ls-light),calc(var(--ls-power)*.3)),transparent 80%),repeating-linear-gradient(4deg,#726a5310 0px,#726a5306 1px,transparent 1px,transparent 3px),#dfd9c5;color:#3e4437;box-shadow:var(--ls-sx) var(--ls-sy) 28px #0009,1px 1px 0 #f8f4e0}
+
+.ls-glass{border-radius:22px;overflow:hidden;backdrop-filter:blur(14px) saturate(.8);-webkit-backdrop-filter:blur(14px) saturate(.8);background:radial-gradient(ellipse at var(--ls-mx) var(--ls-my),rgba(var(--ls-light),calc(var(--ls-power)*.35)),transparent 65%),linear-gradient(135deg,#f4fff31f,#d8f5ed07);border:1px solid #f5fff54a;box-shadow:var(--ls-sx) var(--ls-sy) 30px #0005,inset 0 1px 1px #ffffff65,inset 0 -1px 2px #ffffff12}
+
+.ls-chrome{border:1px solid #f9fff478;border-radius:50px;background:radial-gradient(ellipse at var(--ls-mx) var(--ls-my),rgba(var(--ls-light),calc(var(--ls-power)*.9)),transparent 65%),linear-gradient(165deg,#d1d5ca,#818a7e 32%,#525c50 49%,#d6d9cf 52%,#9ca495 80%,#525c50);color:#20271f;box-shadow:var(--ls-sx) var(--ls-sy) 20px #0007,inset 0 2px 1px #ffffffa0,inset 0 -2px 2px #0007;cursor:pointer}
+
+.ls-metal{border-radius:var(--ls-radius,24px);padding:24px;position:relative}
+.ls-metal:after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 2px #ffffffe0,inset 0 -2px 3px #0008;pointer-events:none}
+.ls-paper{padding:24px}
+.ls-glass{padding:21px;border-radius:var(--ls-radius,22px);color:var(--ls-glass-ink,#efeee7)}
+.ls-chrome{font:inherit;font-weight:700;padding:16px 20px;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.ls-chrome:active{translate:0 2px}
+.ls-chrome:disabled{opacity:.55;cursor:default}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.ls-glass{background-color:var(--ls-glass-fallback,#303a32)}}
+@media(forced-colors:active){.ls-material{border:1px solid CanvasText;box-shadow:none;background:Canvas;color:CanvasText}.ls-metal:after{display:none}}

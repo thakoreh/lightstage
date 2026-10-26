@@ -1,0 +1,11 @@
+node_modules/
+dist/
+showcase/
+*.tgz
+.consumer-check/
+.vite/
+example/public/README.md
+example/public/THIRD-PARTY-NOTICES.txt
+BLOCKER.md
+IMPLEMENTATION-PLAN.md
+!dist/
