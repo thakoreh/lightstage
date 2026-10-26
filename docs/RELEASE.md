@@ -13,17 +13,17 @@ The distribution is a small React 19 library: a scoped scene, metal/glass/paper 
 
 ## Launch draft - not posted
 
-I wanted UI to feel a little less flat, so I built LightStage.
+One light. Metal, glass, paper.
 
-One light moves across brushed metal, translucent glass and textured paper. The highlights and shadows move together. Your text, inputs and buttons stay real React content.
+I built LightStage to make real React UI feel a little less flat.
 
-Small API. Editable source. Keyboard and touch controls. Opt-in motion that respects reduced motion.
+Shared highlights and shadows. Real buttons and inputs. Keyboard + touch.
 
-It's a CSS illusion, not ray tracing.
+Small API. MIT. Stylized CSS lighting.
 
-MIT licensed: https://github.com/thakoreh/lightstage
+https://github.com/thakoreh/lightstage
 
-Try the source, tell me where you'd use it, and show me what you make.
+Where would you use it?
 
 ## Visual story
 
