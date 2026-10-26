@@ -25,7 +25,7 @@ Open the printed loopback URL. The first composition preserves the approved Ligh
 npm install https://github.com/thakoreh/lightstage/archive/refs/tags/v0.1.0.tar.gz
 ```
 
-This installs the committed ESM, TypeScript declarations and CSS as `@lightstage/react`. No consumer build toolchain is needed to generate the library output. This version tag is stable; use a commit archive URL when you need an exact source revision. There is no published npm package or hosted shadcn registry.
+This installs the committed ESM, TypeScript declarations and CSS as `@lightstage/react`. No consumer build toolchain is needed to generate the library output. This version tag is stable; use a commit archive URL when you need an exact source revision. There is no published npm package or hosted shadcn registry. The archive handles package installation and the three canonical source files handle editable copies, so this small release does not need a separate registry service.
 
 For an editable source copy, copy `src/index.tsx`, `src/state.ts` and `src/style.css` together, retain their relative imports, and import from your local module. LightStage's MIT license and existing dependency notices travel with redistributed code.
 
@@ -126,7 +126,7 @@ npm run build
 npm run pack:check
 ```
 
-`pack:check` packs the actual artifact, installs it into an isolated ignored consumer using cached React dependencies, verifies ESM import and server rendering, typechecks that consumer and produces a Vite bundle including the exported CSS. Run dependency installation first so the offline fixture can use the cache. The resulting fixture remains in `.consumer-check/` for inspection.
+`pack:check` packs the actual artifact, installs it into an isolated ignored consumer using the npm cache when available, verifies ESM import and server rendering, typechecks that consumer and produces a Vite bundle including the exported CSS. Consumer verification may fetch registry metadata; it never publishes a package. The resulting fixture remains in `.consumer-check/` for inspection.
 
 See [verification evidence](docs/VERIFICATION.md), [integration instructions for coding agents](docs/FOR-AGENTS.md), and the [release checklist](docs/RELEASE.md). The checked-in `reference/` is the original approved source, retained for comparison. Its 21 mock-DOM assertions are historical baseline coverage, not visual or accessibility certification.
 

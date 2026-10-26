@@ -60,3 +60,9 @@ No Firefox, Safari, iOS device, physical touch device or screen-reader QA was pe
 No accessibility conformance, exhaustive contrast certification, broad browser support or measured performance guarantee is claimed. Forced-color and missing-backdrop-filter CSS fallbacks are implemented, with browser verification still pending. Consumer content needs its own contrast checks. Moving CSS transforms while the light is stationary require a subsequent light/resize/scroll update to refresh rectangle geometry.
 
 No shadcn registry endpoint, npm publication, hosted showcase update or social post exists. GitHub source publication under MIT is authorized; exact remote-install and CI evidence will be recorded after publication. npm publication, hosted deployment and social posting remain separate decisions.
+
+## Public source installation
+
+The public commit archive at `25169a09d6d5fc72116bd3cf7c9d23ff12c1311b` was installed into a new consumer outside the repository. ESM import, SSR, all public component/hook types, exported CSS bundling and project-scoped agent installation passed. The check is reproducible with `npm run public:check -- <exact-commit-archive-url>`.
+
+The first GitHub CI run passed typecheck, all 15 tests, the original 21 assertions, the production build and committed-artifact consistency on Node 22 and 24. Its tarball consumer step exposed an incorrect test-harness assumption: npm ci does not necessarily cache the registry metadata required for a fresh offline peer resolution. The harness now prefers cached data while allowing metadata fetches; it does not bypass peer checks. The next CI run must verify that correction before a release tag is finalized.

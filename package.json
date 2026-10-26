@@ -38,7 +38,8 @@
     "prepack": "npm run build:lib",
     "test:original": "node scripts/check-original.cjs",
     "notices": "node scripts/dependency-notices.mjs",
-    "install:skill": "node scripts/install-agent-skill.mjs"
+    "install:skill": "node scripts/install-agent-skill.mjs",
+    "public:check": "node scripts/check-public-install.mjs"
   },
   "devDependencies": {
     "@testing-library/react": "^16.3.3",

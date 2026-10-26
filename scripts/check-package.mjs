@@ -16,7 +16,7 @@ if(!/^['"]use client['"]/.test(readFileSync('dist/index.js','utf8'))) throw new 
 mkdirSync(fixture,{recursive:true});
 const typesVersion=name=>JSON.parse(readFileSync(join(root,'node_modules',name,'package.json'),'utf8')).version;
 writeFileSync(join(fixture,'package.json'),JSON.stringify({private:true,type:'module',dependencies:{'@lightstage/react':`file:${archive.replaceAll('\\','/')}`,react:'19.3.1','react-dom':'19.3.1'},devDependencies:{'@types/react':typesVersion('@types/react'),'@types/react-dom':typesVersion('@types/react-dom')}},null,2));
-run(process.execPath,[npm,'install','--offline','--ignore-scripts','--no-audit','--no-fund'],fixture);
+run(process.execPath,[npm,'install','--prefer-offline','--ignore-scripts','--no-audit','--no-fund'],fixture);
 writeFileSync(join(fixture,'ssr.mjs'),`import React from 'react';import {renderToString} from 'react-dom/server';import {LightStage,Material,MetalButton} from '@lightstage/react';const html=renderToString(React.createElement(LightStage,null,React.createElement(Material,{kind:'paper'},'Packed content'),React.createElement(MetalButton,null,'Save')));if(!html.includes('Packed content')||!html.includes('<button'))throw new Error('Packed SSR import failed');console.log('Packed ESM import and SSR passed');`);
 console.log(run(process.execPath,['ssr.mjs'],fixture).trim());
 const installer=join(fixture,'node_modules/@lightstage/react/scripts/install-agent-skill.mjs');
