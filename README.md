@@ -22,7 +22,7 @@ Open the printed loopback URL. The first composition preserves the approved Ligh
 ## Install in a React 19 app
 
 ```sh
-npm install https://github.com/thakoreh/lightstage/archive/refs/tags/v0.1.0.tar.gz
+npm install https://github.com/thakoreh/lightstage/archive/refs/tags/v0.1.1.tar.gz
 ```
 
 This installs the committed ESM, TypeScript declarations and CSS as `@lightstage/react`. No consumer build toolchain is needed to generate the library output. This version tag is stable; use a commit archive URL when you need an exact source revision. There is no published npm package or hosted shadcn registry. The archive handles package installation and the three canonical source files handle editable copies, so this small release does not need a separate registry service.
@@ -133,7 +133,5 @@ See [verification evidence](docs/VERIFICATION.md), [integration instructions for
 ## Provenance and license
 
 The original owned LightStage study is the visual and code source. The approved source is retained in `reference/` for comparison.
-
-[dithercn](https://github.com/opencoredev/dithercn) informed the packaging direction: editable source, examples and agent guidance. No code, branding or assets were copied from it and no affiliation is implied. Its website and supplied X post were unavailable to this research environment.
 
 LightStage is [MIT licensed](LICENSE), copyright 2026 Hiren Thakore. React and development-tool licenses remain their respective authors' licenses; see [NOTICE.md](NOTICE.md).
