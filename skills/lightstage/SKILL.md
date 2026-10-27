@@ -10,7 +10,7 @@ Inspect the app's React version, framework client boundaries and CSS reset. Read
 For a React 19 consumer, the public source archive installs as `@lightstage/react`:
 
 ```sh
-npm install https://github.com/thakoreh/lightstage/archive/refs/tags/v0.1.1.tar.gz
+npm install https://github.com/thakoreh/lightstage/archive/refs/tags/v0.1.2.tar.gz
 ```
 
 ```tsx
