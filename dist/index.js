@@ -118,7 +118,7 @@ export const LightStage = forwardRef(function LightStage({ defaults, interactive
     }, [store]);
     const ownsEvent = (target) => target instanceof Element && target.closest('[data-lightstage]') === root.current;
     const pointer = (event) => {
-        if (!interactive || event.defaultPrevented || !ownsEvent(event.target) || event.target instanceof Element && event.target.closest('button,input,select,textarea,a,[contenteditable=true]'))
+        if (!interactive || event.defaultPrevented || !ownsEvent(event.target) || event.target instanceof Element && event.target.closest('button,input,select,textarea,a,[contenteditable=""],[contenteditable="true" i],[contenteditable="plaintext-only" i]'))
             return;
         if (event.pointerType === 'touch' && event.buttons === 0)
             return;

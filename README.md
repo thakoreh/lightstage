@@ -27,6 +27,8 @@ npm install https://github.com/thakoreh/lightstage/archive/refs/tags/v0.1.1.tar.
 
 This installs the committed ESM, TypeScript declarations and CSS as `@lightstage/react`. No consumer build toolchain is needed to generate the library output. This version tag is stable; use a commit archive URL when you need an exact source revision. There is no published npm package or hosted shadcn registry. The archive handles package installation and the three canonical source files handle editable copies, so this small release does not need a separate registry service.
 
+The `v0.1.1` archive still repositions the light when clicking or selecting inside `contenteditable=""` or `contenteditable="plaintext-only"` regions. The current source fixes this interaction; use a reviewed commit archive to consume that fix until a new version is tagged.
+
 For an editable source copy, copy `src/index.tsx`, `src/state.ts` and `src/style.css` together, retain their relative imports, and import from your local module. LightStage's MIT license and existing dependency notices travel with redistributed code.
 
 ```tsx
