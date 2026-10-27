@@ -100,7 +100,7 @@ export const LightStage = forwardRef<HTMLDivElement,LightStageProps>(function Li
   },[store]);
   const ownsEvent=(target:EventTarget | null) => target instanceof Element && target.closest('[data-lightstage]')===root.current;
   const pointer=(event:React.PointerEvent<HTMLDivElement>) => {
-    if(!interactive||event.defaultPrevented||!ownsEvent(event.target)||event.target instanceof Element&&event.target.closest('button,input,select,textarea,a,[contenteditable=true]')) return;
+    if(!interactive||event.defaultPrevented||!ownsEvent(event.target)||event.target instanceof Element&&event.target.closest('button,input,select,textarea,a,[contenteditable=""],[contenteditable="true" i],[contenteditable="plaintext-only" i]')) return;
     if(event.pointerType==='touch'&&event.buttons===0) return;
     const rect=root.current!.getBoundingClientRect();if(!rect.width||!rect.height) return;
     store.setAuto(false);

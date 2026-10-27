@@ -54,6 +54,16 @@ describe('React scene lifecycle and input',()=>{
     render(<LightStage data-testid="outer"><MetalButton>Button</MetalButton><LightStage data-testid="inner"/><Panel/></LightStage>);
     fireEvent.pointerMove(screen.getByTestId('inner'),{clientX:10,clientY:10});fireEvent.pointerMove(screen.getByText('Button'),{clientX:10,clientY:10});act(()=>tick());expect(state().x).toBe(.72);
   });
+  it('preserves pointer input in empty and plaintext-only contenteditable regions',()=>{
+    render(<LightStage controls={<Panel/>}><div ref={node=>node?.setAttribute('contenteditable','')}><span>Editable note</span></div><div contentEditable="plaintext-only" suppressContentEditableWarning>Plain note</div></LightStage>);
+    act(()=>tick());fireEvent.click(screen.getByText('Auto'));act(()=>tick());
+    const before=state();
+    fireEvent.pointerDown(screen.getByText('Editable note'),{clientX:10,clientY:10});
+    fireEvent.pointerMove(screen.getByText('Plain note'),{clientX:20,clientY:20});
+    act(()=>tick());
+    expect(state().auto).toBe(true);
+    expect(state().x).toBeCloseTo(before.x);
+  });
   it('keeps sibling scene providers independent through pointer and keyboard changes',()=>{
     function Readout({id}:{id:string}){const s=useLightStage();return <output data-testid={id}>{s.x}</output>;}
     render(<><LightStage data-testid="first"><Readout id="a"/></LightStage><LightStage data-testid="second" defaults={{x:.2}}><Readout id="b"/></LightStage></>);
