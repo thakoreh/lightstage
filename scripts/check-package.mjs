@@ -10,7 +10,7 @@ const run=(file,args,cwd=root)=>execFileSync(file,args,{cwd,stdio:'pipe',encodin
 const packed=JSON.parse(run(process.execPath,[npm,'pack','--json']));
 const archive=resolve(packed[0].filename);
 const names=packed[0].files.map(file=>file.path);
-for(const required of ['dist/index.js','dist/state.js','dist/index.d.ts','dist/style.css','README.md','LICENSE','NOTICE.md','docs/DEPENDENCIES.json','docs/THIRD-PARTY-NOTICES.txt','skills/lightstage/SKILL.md','scripts/install-agent-skill.mjs']) if(!names.includes(required))throw new Error(`Tarball missing ${required}`);
+for(const required of ['dist/index.js','dist/state.js','dist/index.d.ts','dist/style.css','README.md','CHANGELOG.md','LICENSE','NOTICE.md','docs/DEPENDENCIES.json','docs/THIRD-PARTY-NOTICES.txt','skills/lightstage/SKILL.md','scripts/install-agent-skill.mjs']) if(!names.includes(required))throw new Error(`Tarball missing ${required}`);
 if(names.some(name=>/^(reference|example|node_modules|\.openai)(\/|$)/.test(name))) throw new Error('Unexpected private or development source in tarball.');
 if(!/^['"]use client['"]/.test(readFileSync('dist/index.js','utf8'))) throw new Error('Client boundary directive was lost.');
 mkdirSync(fixture,{recursive:true});
@@ -19,6 +19,8 @@ writeFileSync(join(fixture,'package.json'),JSON.stringify({private:true,type:'mo
 run(process.execPath,[npm,'install','--prefer-offline','--ignore-scripts','--no-audit','--no-fund'],fixture);
 writeFileSync(join(fixture,'ssr.mjs'),`import React from 'react';import {renderToString} from 'react-dom/server';import {LightStage,Material,MetalButton} from '@lightstage/react';const html=renderToString(React.createElement(LightStage,null,React.createElement(Material,{kind:'paper'},'Packed content'),React.createElement(MetalButton,null,'Save')));if(!html.includes('Packed content')||!html.includes('<button'))throw new Error('Packed SSR import failed');console.log('Packed ESM import and SSR passed');`);
 console.log(run(process.execPath,['ssr.mjs'],fixture).trim());
+writeFileSync(join(fixture,'regression.mjs'),readFileSync('scripts/public-consumer-regression.mjs','utf8'));
+console.log(run(process.execPath,['regression.mjs',resolve('node_modules/jsdom/lib/api.js')],fixture).trim());
 const installer=join(fixture,'node_modules/@lightstage/react/scripts/install-agent-skill.mjs');
 console.log(run(process.execPath,[installer,fixture],fixture).trim());
 run(process.execPath,[installer,fixture],fixture);

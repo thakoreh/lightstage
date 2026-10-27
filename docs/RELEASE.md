@@ -4,6 +4,12 @@ The owner approved the public `thakoreh/lightstage` repository and MIT license. 
 
 The distribution is a small React 19 library: a scoped scene, metal/glass/paper materials, a native chrome button, a runnable showcase, source-copy instructions, a GitHub archive installation path and a project-scoped coding-agent skill. Committed dist/ supports source-archive installation without building the library in each consumer. CI checks that it matches source.
 
+## Version 0.1.2
+
+This patch includes the editable-content interaction fix from PR #1. The package metadata, lockfile, README, showcase install command and bundled skill use `0.1.2`; [CHANGELOG.md](../CHANGELOG.md) records the change. Distribution is the immutable `v0.1.2` GitHub tag archive, with GitHub release notes. npm publication and hosted deployment remain separate.
+
+Before creating the tag, pass the normal pull-request checks, merge without bypass, and wait for both main CI jobs and the exact main archive consumer check. Create the tag at that tested merge SHA without moving existing tags. After tagging, rerun `npm run public:check -- https://github.com/thakoreh/lightstage/archive/refs/tags/v0.1.2.tar.gz` with a newly created empty npm cache. Confirm the public tag SHA, package version and release metadata. The public check exercises the installed editor regression, SSR, types, CSS and coding-agent skill. Never report a published tag or release until the remote metadata confirms it.
+
 ## Before announcing broadly
 
 - Confirm the public install/use test and both CI matrix jobs pass for the exact remote commit. Record their evidence in VERIFICATION.md.
